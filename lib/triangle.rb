@@ -4,6 +4,14 @@ class Triangle
     @triangle_sides << side1
     @triangle_sides << side2
     @triangle_sides << side3
+    
+    if side1 <= 0 || side2 <= 0 || side3 <= 0
+      raise TriangleError
+    end
+    
+    if side1 == nil || side2 == nil || side3 == nil
+      raise TriangleError
+    end
   end
   
   def valid? 
@@ -34,5 +42,8 @@ class Triangle
 end
   
   class TriangleError < StandardError
+    def message
+      "This is not a valid triangle."
+    end
   end
 
